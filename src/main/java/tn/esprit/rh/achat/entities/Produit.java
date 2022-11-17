@@ -48,6 +48,9 @@ public class Produit implements Serializable {
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
 	
+	public Produit(String codeProduit){
+		this.codeProduit= codeProduit;
+	}
 
 
 	

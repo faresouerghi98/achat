@@ -24,11 +24,11 @@ import tn.esprit.rh.achat.repositories.ProduitRepository;
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceTest {
     @Autowired
-    IProduitService ss;
+    
     ProduitRepository produitRepository = Mockito.mock(ProduitRepository.class);
 
-    Produit s1 = new Produit("produit1", 5, 3);
-    Produit s2 = new Produit("produit2", 5, 3);
+    Produit p1 = new Produit("produit1");
+    Produit p2 = new Produit("produit2");
     List<Produit> produits = new ArrayList<Produit>() ;
    
    
@@ -38,7 +38,7 @@ public class ProduitServiceTest {
         produits.add(p1);
         produits.add(p2);
         Mockito.when(produitRepository.findAll()).thenReturn(produits);
-        // List<Produit> listProduits = ss.retrieveAllProduits();
+        List<Produit> listProduits = produitRepository.findAll();
         Assertions.assertEquals(produits.size(), listProduits.size());
     }
 }
