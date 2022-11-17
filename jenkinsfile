@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+
+    stages {
+        stage('GIT') {
+            steps {
+                // Get some code from a GitHub repository
+                git branch: 'main',
+                url: 'https://github.com/faresouerghi98/achat.git'
+            }
+        }
+        stage('MVN CLEAN') {
+            steps {
+                // Get some code from a GitHub repository
+                sh 'mvn clean'
+            }
+        }
+        
+         stage('MVN COMPILE') {
+            steps {
+                // Get some code from a GitHub repository
+                sh 'mvn  compile'
+            }
+        }
+        stage('SONARQUBE') {
+            steps {
+                // Get some code from a GitHub repository
+              // You can override the credential to be used
+                sh 'mvn sonar:sonar -Dsonar.projectKey=achat -Dsonar.host.url=http://172.10.0.140:9000 -Dsonar.login=bcb9015c5b0bcddd69ca0a4daf342609b217fac8'
+    
+            }
+        }
+        
+        stage('JUNIT/MOCKITO') {
+            steps {
+                // Get some code from a GitHub repository
+                sh 'mvn test'
+            }
+        }
+          stage('NEXUS') {
+            steps {
+                // Get some code from a GitHub repository
+                sh 'mvn deploy'
+            }
+        }
+       
+        
+    }
+}

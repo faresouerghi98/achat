@@ -38,7 +38,7 @@ public class StockServiceTest {
         stocks.add(s1);
         stocks.add(s2);
         Mockito.when(stockRepository.findAll()).thenReturn(stocks);
-        List<Stock> listStocks = ss.retrieveAllStocks();
+        List<Stock> listStocks = stockRepository.findAll();
         Assertions.assertEquals(stocks.size(), listStocks.size());
     }
 }
