@@ -27,7 +27,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
               // You can override the credential to be used
-                sh 'mvn sonar:sonar -Dsonar.projectKey=achat -Dsonar.host.url=http://192.168.1.118/:9000 -Dsonar.login=ead050293b8944807e773e4b00d909803730dd11'
+                sh 'mvn sonar:sonar -Dsonar.projectKey=achat -Dsonar.host.url=http://192.168.1.118:9000 -Dsonar.login=ead050293b8944807e773e4b00d909803730dd11'
     
             }
         }
